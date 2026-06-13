@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typowanie Gruby Serwer Mundial 2026</title>
+    <style>
+        :root {
+            --bg-color: #0d1117;
+            --card-bg: #161b22;
+            --accent-color: #00ff87; /* Mundialowa żywa zieleń */
+            --text-color: #f0f6fc;
+            --text-secondary: #8b949e;
+            --gold: #ffd700;
+            --silver: #c0c0c0;
+            --bronze: #cd7f32;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding: 20px 10px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            color: var(--text-color);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+            text-shadow: 0 0 10px rgba(0, 255, 135, 0.3);
+        }
+
+        header h1 span {
+            color: var(--accent-color);
+        }
+
+        header p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .podium-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 35px;
+        }
+
+        .podium-card {
+            background: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 15px;
+            text-align: center;
+            flex: 1;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .podium-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+        }
+
+        .podium-card.1st::before { background: var(--gold); }
+        .podium-card.2nd::before { background: var(--silver); }
+        .podium-card.3nd::before { background: var(--bronze); }
+
+        .podium-badge {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+
+        .podium-name {
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .podium-xp {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 0.9rem;
+            background: rgba(0, 255, 135, 0.1);
+            padding: 3px 8px;
+            border-radius: 20px;
+            display: inline-block;
+        }
+
+        .table-container {
+            width: 100%;
+            max-width: 800px;
+            background: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            overflow-x: auto;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #1f242c;
+            color: var(--text-secondary);
+            font-weight: 600;
+            text-transform: uppercase;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            padding: 14px 16px;
+            border-bottom: 1px solid #30363d;
+        }
+
+        td {
+            padding: 14px 16px;
+            border-bottom: 1px solid #21262d;
+            color: var(--text-color);
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        tr:hover td {
+            background-color: #1f242c;
+        }
+
+        .pos {
+            font-weight: bold;
+            text-align: center;
+            width: 50px;
+        }
+
+        .pos-1 { color: var(--gold); font-size: 1.1rem; }
+        .pos-2 { color: var(--silver); font-size: 1.1rem; }
+        .pos-3 { color: var(--bronze); font-size: 1.1rem; }
+
+        .player-name {
+            font-weight: 600;
+        }
+        
+        tr:nth-child(-n+3) .player-name {
+            color: var(--accent-color);
+        }
+
+        .xp-cell {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.85rem;
+        }
+
+        .xp-cell.has-pts {
+            color: var(--text-color);
+        }
+
+        .total-xp {
+            font-weight: bold;
+            color: var(--accent-color);
+            text-align: center;
+        }
+
+        .stats-grid {
+            width: 100%;
+            max-width: 800px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--card-bg);
+            border: 1px solid #30363d;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .stat-title {
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .stat-value {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--text-color);
+        }
+
+        footer {
+            text-align: center;
+            color: var(--text-secondary);
+            font-size: 0.8rem;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 { font-size: 1.7rem; }
+            th, td { padding: 10px 12px; font-size: 0.85rem; }
+            .podium-name { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>🏆 Typowanie <span>Gruby Serwer</span></h1>
+        <p>⚽ Mundial 2026 — Statystyki ⚽</p>
+    </header>
+
+    <!-- SEKCOJA PODIUM -->
+    <div class="podium-container">
+        <div class="podium-card 2nd">
+            <div class="podium-badge">🥈</div>
+            <div class="podium-name">Michu</div>
+            <div class="podium-xp">150 XP</div>
+        </div>
+        <div class="podium-card 1st">
+            <div class="podium-badge">🥇</div>
+            <div class="podium-name">Pandusia</div>
+            <div class="podium-xp">150 XP</div>
+        </div>
+        <div class="podium-card 3nd">
+            <div class="podium-badge">🥉</div>
+            <div class="podium-name">Szotu</div>
+            <div class="podium-xp">150 XP</div>
+        </div>
+    </div>
+
+    <!-- GŁÓWNA TABELA -->
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th style="text-align: center;">Poz.</th>
+                    <th>Zawodnik</th>
+                    <th style="text-align: center;">Dzień 1</th>
+                    <th style="text-align: center;">Dzień 2</th>
+                    <th style="text-align: center;">Dzień 3</th>
+                    <th style="text-align: center;">Dzień 4</th>
+                    <th style="text-align: center;">Dzień 5</th>
+                    <th style="text-align: center;">Dzień 6</th>
+                    <th style="text-align: center;">Dzień 7</th>
+                    <th style="text-align: center;">Suma XP</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td class="pos pos-1">1</td>
+                    <td class="player-name">Pandusia</td>
+                    <td class="xp-cell has-pts">50 XP</td>
+                    <td class="xp-cell has-pts">100 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">150 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos pos-2">2</td>
+                    <td class="player-name">Michu</td>
+                    <td class="xp-cell has-pts">50 XP</td>
+                    <td class="xp-cell has-pts">100 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">150 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos pos-3">3</td>
+                    <td class="player-name">Szotu</td>
+                    <td class="xp-cell has-pts">50 XP</td>
+                    <td class="xp-cell has-pts">100 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">150 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos">4</td>
+                    <td class="player-name">Tonia</td>
+                    <td class="xp-cell has-pts">100 XP</td>
+                    <td class="xp-cell has-pts">0 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">100 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos">5</td>
+                    <td class="player-name">Symciu</td>
+                    <td class="xp-cell has-pts">100 XP</td>
+                    <td class="xp-cell has-pts">0 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">100 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos">6</td>
+                    <td class="player-name">Ketchup</td>
+                    <td class="xp-cell has-pts">100 XP</td>
+                    <td class="xp-cell has-pts">0 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">100 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos">7</td>
+                    <td class="player-name">Grubcio</td>
+                    <td class="xp-cell has-pts">0 XP</td>
+                    <td class="xp-cell has-pts">100 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">100 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos">8</td>
+                    <td class="player-name">Kacperoskyy</td>
+                    <td class="xp-cell has-pts">50 XP</td>
+                    <td class="xp-cell has-pts">0 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">50 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos">9</td>
+                    <td class="player-name">Orzeł</td>
+                    <td class="xp-cell has-pts">50 XP</td>
+                    <td class="xp-cell has-pts">0 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">50 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos">10</td>
+                    <td class="player-name">PanMann</td>
+                    <td class="xp-cell has-pts">50 XP</td>
+                    <td class="xp-cell has-pts">0 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">50 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos">11</td>
+                    <td class="player-name">Grzegoś</td>
+                    <td class="xp-cell has-pts">50 XP</td>
+                    <td class="xp-cell has-pts">0 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">50 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos">12</td>
+                    <td class="player-name">MineBlack</td>
+                    <td class="xp-cell has-pts">50 XP</td>
+                    <td class="xp-cell has-pts">0 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">50 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos">13</td>
+                    <td class="player-name">D4ny</td>
+                    <td class="xp-cell has-pts">50 XP</td>
+                    <td class="xp-cell has-pts">0 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">50 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos">14</td>
+                    <td class="player-name">Kasti</td>
+                    <td class="xp-cell has-pts">50 XP</td>
+                    <td class="xp-cell has-pts">0 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">50 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos">15</td>
+                    <td class="player-name">Ziółko</td>
+                    <td class="xp-cell has-pts">50 XP</td>
+                    <td class="xp-cell has-pts">0 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">50 XP</td>
+                </tr>
+                <tr>
+                    <td class="pos">16</td>
+                    <td class="player-name">Tajemniczy Monik</td>
+                    <td class="xp-cell has-pts">50 XP</td>
+                    <td class="xp-cell has-pts">0 XP</td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="xp-cell"></td>
+                    <td class="total-xp">50 XP</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- DODATKOWE STATYSTYKI -->
+    <div class="stats-grid">
+        <div class="stat-card">
+            <div class="stat-title">👟 Złoty But (Max XP w dzień)</div>
+            <div class="stat-value" style="color: var(--accent-color);">100 XP</div>
+        </div>
+        <div class="stat-card">
+            <div class="stat-title">🏟️ Status rozgrywek</div>
+            <div class="stat-value">W TRAKCIE (Dzień 2/7)</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>Ostatnia aktualizacja: 13 czerwca 2026 | Zsynchronizowano z Grubego Serwera</p>
+    </footer>
+
+</body>
+                                                       </html>
