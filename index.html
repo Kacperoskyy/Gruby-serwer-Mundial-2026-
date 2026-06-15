@@ -1,4 +1,4 @@
-                <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -24,7 +24,6 @@
         .weeks-nav { display: flex; justify-content: center; gap: 15px; margin-bottom: 30px; }
         .week-btn { background: var(--card-bg); border: 1px solid var(--accent-color); color: var(--accent-color); padding: 12px 25px; border-radius: 8px; text-decoration: none; font-weight: bold; font-size: 0.9rem; transition: 0.3s; }
         .week-btn.active { background: var(--accent-color); color: var(--bg-color); }
-        .week-btn:hover { background: rgba(0, 255, 135, 0.1); }
         
         .podium-container { display: flex; justify-content: center; gap: 15px; width: 100%; max-width: 900px; margin-bottom: 35px; }
         .podium-card { background: var(--card-bg); border: 1px solid #30363d; border-radius: 12px; padding: 20px; text-align: center; flex: 1; box-shadow: 0 4px 15px rgba(0,0,0,0.5); position: relative; }
@@ -57,9 +56,9 @@
     </div>
 
     <div class="podium-container">
-        <div class="podium-card 2nd">🥈 Pandusia<br><div class="podium-name">Pandusia</div><div class="podium-xp">300 XP</div></div>
-        <div class="podium-card 1st">🥇 Michu<br><div class="podium-name">Michu</div><div class="podium-xp">300 XP</div></div>
-        <div class="podium-card 3nd">🥉 Kasti<br><div class="podium-name">Kasti</div><div class="podium-xp">300 XP</div></div>
+        <div class="podium-card 2nd">🥈 Michu<br><div class="podium-name">Michu</div><div class="podium-xp">350 XP</div></div>
+        <div class="podium-card 1st">🥇 Pandusia<br><div class="podium-name">Pandusia</div><div class="podium-xp">350 XP</div></div>
+        <div class="podium-card 3nd">🥉 Kasti<br><div class="podium-name">Kasti</div><div class="podium-xp">350 XP</div></div>
     </div>
 
     <div class="table-container">
@@ -78,21 +77,25 @@
                 </tr>
             </thead>
             <tbody>
-                <tr><td>1</td><td class="player-name">Michu</td><td>50</td><td>100</td><td>50</td><td>100</td><td>-</td><td>-</td><td>-</td><td class="total-xp">300</td></tr>
-                <tr><td>2</td><td class="player-name">Pandusia</td><td>50</td><td>100</td><td>50</td><td>100</td><td>-</td><td>-</td><td>-</td><td class="total-xp">300</td></tr>
-                <tr><td>3</td><td class="player-name">Kasti</td><td>50</td><td>0</td><td>50</td><td>200</td><td>-</td><td>-</td><td>-</td><td class="total-xp">300</td></tr>
-                <tr><td>4</td><td class="player-name">Tonia</td><td>100</td><td>0</td><td>50</td><td>100</td><td>-</td><td>-</td><td>-</td><td class="total-xp">250</td></tr>
-                <tr><td>5</td><td class="player-name">Symciu</td><td>100</td><td>0</td><td>50</td><td>100</td><td>-</td><td>-</td><td>-</td><td class="total-xp">250</td></tr>
-                <tr><td>6</td><td class="player-name">Szotu</td><td>50</td><td>100</td><td>50</td><td>50</td><td>-</td><td>-</td><td>-</td><td class="total-xp">250</td></tr>
-                <tr><td>7</td><td class="player-name">Orzeł</td><td>50</td><td>0</td><td>50</td><td>150</td><td>-</td><td>-</td><td>-</td><td class="total-xp">250</td></tr>
-                <tr><td>8</td><td class="player-name">Kacperoskyy</td><td>50</td><td>0</td><td>0</td><td>150</td><td>-</td><td>-</td><td>-</td><td class="total-xp">200</td></tr>
-                <tr><td>9</td><td class="player-name">MineBlack</td><td>50</td><td>0</td><td>50</td><td>100</td><td>-</td><td>-</td><td>-</td><td class="total-xp">200</td></tr>
-                <tr><td>10</td><td class="player-name">Ziółko</td><td>50</td><td>0</td><td>0</td><td>100</td><td>-</td><td>-</td><td>-</td><td class="total-xp">150</td></tr>
-                <tr><td>11</td><td class="player-name">Ketchup</td><td>100</td><td>0</td><td>0</td><td>0</td><td>-</td><td>-</td><td>-</td><td class="total-xp">100</td></tr>
-                <tr><td>12</td><td class="player-name">Grubcio</td><td>0</td><td>100</td><td>0</td><td>0</td><td>-</td><td>-</td><td>-</td><td class="total-xp">100</td></tr>
-                <tr><td>13</td><td class="player-name">Gefinka</td><td>-</td><td>-</td><td>-</td><td>100</td><td>-</td><td>-</td><td>-</td><td class="total-xp">100</td></tr>
-                <tr><td>14</td><td class="player-name">Jokita</td><td>-</td><td>-</td><td>-</td><td>100</td><td>-</td><td>-</td><td>-</td><td class="total-xp">100</td></tr>
-                <tr><td>15</td><td class="player-name">Klaudzilla</td><td>-</td><td>-</td><td>50</td><td>0</td><td>-</td><td>-</td><td>-</td><td class="total-xp">50</td></tr>
+                <tr><td>1</td><td class="player-name">Pandusia</td><td>50</td><td>100</td><td>50</td><td>100</td><td>50</td><td>-</td><td>-</td><td class="total-xp">350</td></tr>
+                <tr><td>2</td><td class="player-name">Michu</td><td>50</td><td>100</td><td>50</td><td>100</td><td>50</td><td>-</td><td>-</td><td class="total-xp">350</td></tr>
+                <tr><td>3</td><td class="player-name">Kasti</td><td>50</td><td>0</td><td>50</td><td>200</td><td>50</td><td>-</td><td>-</td><td class="total-xp">350</td></tr>
+                <tr><td>4</td><td class="player-name">Tonia</td><td>100</td><td>0</td><td>50</td><td>100</td><td>50</td><td>-</td><td>-</td><td class="total-xp">300</td></tr>
+                <tr><td>5</td><td class="player-name">Orzeł</td><td>50</td><td>0</td><td>50</td><td>150</td><td>50</td><td>-</td><td>-</td><td class="total-xp">300</td></tr>
+                <tr><td>6</td><td class="player-name">MineBlack</td><td>50</td><td>0</td><td>50</td><td>100</td><td>100</td><td>-</td><td>-</td><td class="total-xp">300</td></tr>
+                <tr><td>7</td><td class="player-name">Szotu</td><td>50</td><td>100</td><td>50</td><td>50</td><td>100</td><td>-</td><td>-</td><td class="total-xp">350</td></tr>
+                <tr><td>8</td><td class="player-name">Symciu</td><td>100</td><td>0</td><td>50</td><td>100</td><td>0</td><td>-</td><td>-</td><td class="total-xp">250</td></tr>
+                <tr><td>9</td><td class="player-name">Kacperoskyy</td><td>50</td><td>0</td><td>0</td><td>150</td><td>0</td><td>-</td><td>-</td><td class="total-xp">200</td></tr>
+                <tr><td>10</td><td class="player-name">Ziółko</td><td>50</td><td>0</td><td>0</td><td>100</td><td>0</td><td>-</td><td>-</td><td class="total-xp">150</td></tr>
+                <tr><td>11</td><td class="player-name">Ketchup</td><td>100</td><td>0</td><td>0</td><td>0</td><td>50</td><td>-</td><td>-</td><td class="total-xp">150</td></tr>
+                <tr><td>12</td><td class="player-name">Grubcio</td><td>0</td><td>100</td><td>0</td><td>0</td><td>50</td><td>-</td><td>-</td><td class="total-xp">150</td></tr>
+                <tr><td>13</td><td class="player-name">Gefinka</td><td>-</td><td>-</td><td>-</td><td>100</td><td>0</td><td>-</td><td>-</td><td class="total-xp">100</td></tr>
+                <tr><td>14</td><td class="player-name">Jokita</td><td>-</td><td>-</td><td>-</td><td>100</td><td>0</td><td>-</td><td>-</td><td class="total-xp">100</td></tr>
+                <tr><td>15</td><td class="player-name">Klaudzilla</td><td>-</td><td>-</td><td>50</td><td>0</td><td>0</td><td>-</td><td>-</td><td class="total-xp">50</td></tr>
+                <tr><td>16</td><td class="player-name">PanMann</td><td>50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>-</td><td>-</td><td class="total-xp">50</td></tr>
+                <tr><td>17</td><td class="player-name">Grzegoś</td><td>50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>-</td><td>-</td><td class="total-xp">50</td></tr>
+                <tr><td>18</td><td class="player-name">D4ny</td><td>50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>-</td><td>-</td><td class="total-xp">50</td></tr>
+                <tr><td>19</td><td class="player-name">Tajemniczy Monik</td><td>50</td><td>0</td><td>0</td><td>0</td><td>0</td><td>-</td><td>-</td><td class="total-xp">50</td></tr>
             </tbody>
         </table>
     </div>
